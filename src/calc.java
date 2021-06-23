@@ -13,7 +13,7 @@ class calc implements ActionListener {
 	private static JPanel panel = new JPanel();
 	private static JLabel label = new JLabel();
 	private static JLabel label2 = new JLabel();
-	private static JLabel label3= new JLabel();
+	private static JLabel label3 = new JLabel();
 	private static JFrame frame = new JFrame();
 	private static JButton clearButton = new JButton();
 	private static JButton addButton = new JButton();
@@ -32,6 +32,7 @@ class calc implements ActionListener {
 	private static JButton button7 = new JButton();
 	private static JButton button8 = new JButton();
 	private static JButton button9 = new JButton();
+	private static JButton button0 = new JButton();
 
 	public static void main(String[] args) {
 
@@ -48,7 +49,7 @@ class calc implements ActionListener {
 		label2 = new JLabel(var);
 		label2.setBounds(10, 45, 300, 30);
 		panel.add(label2);
-		
+
 		label3 = new JLabel();
 		label3.setBounds(10, 65, 300, 30);
 		panel.add(label3);
@@ -60,10 +61,10 @@ class calc implements ActionListener {
 		clearButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e1) {
 				var = "";
-				ans="";
+				ans = "";
 				label2.setText(var);
 				label3.setText("");
-				
+
 			}
 
 		});
@@ -236,9 +237,24 @@ class calc implements ActionListener {
 			}
 
 		});
-		
+
+		/* F */
+
+		button0 = new JButton("0");
+		button0.setBounds(10, 275, 50, 35);
+		panel.add(button0);
+
+		button0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e1) {
+				var += "0";
+				ans += "0";
+				label2.setText(var);
+			}
+
+		});
+
 		sqrtButton = new JButton("\u221A");
-		sqrtButton.setBounds(10, 275, 80, 35);
+		sqrtButton.setBounds(70, 275, 50, 35);
 		panel.add(sqrtButton);
 
 		sqrtButton.addActionListener(new ActionListener() {
@@ -249,9 +265,8 @@ class calc implements ActionListener {
 			}
 
 		});
-		
 		powButton = new JButton("^");
-		powButton.setBounds(100, 275, 80, 35);
+		powButton.setBounds(130, 275, 50, 35);
 		panel.add(powButton);
 
 		powButton.addActionListener(new ActionListener() {
@@ -262,7 +277,6 @@ class calc implements ActionListener {
 			}
 
 		});
-
 		equalButton = new JButton("=");
 		equalButton.setBounds(190, 220, 50, 90);
 		panel.add(equalButton);
@@ -271,15 +285,14 @@ class calc implements ActionListener {
 			public void actionPerformed(ActionEvent e1) {
 				String qus = ans;
 				double p = (double) obj.eval(qus);
-				
-				if (p>=2147483647) {
-					var="calculator error[num too big]";
-					
-				}else {
+
+				if (p >= 2147483647) {
+					var = "calculator error[num too big]";
+
+				} else {
 					var = (Double.toString(p));
 					ans = (Double.toString(p));
-					
-					
+
 				}
 				label3.setText("= " + var);
 
@@ -292,7 +305,7 @@ class calc implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
